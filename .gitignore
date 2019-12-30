@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+.vscode
+
+
+app.db
+microblog.log*
+itora.log*

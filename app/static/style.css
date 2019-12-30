@@ -1,0 +1,73 @@
+body {
+  font-family : 'Hind', sans-serif;
+  font-size   : 15px;
+  line-height : 1.8em;
+  color       : #989898;
+  font-weight : 300;
+  }
+
+/* --------------------------------------
+* Global Typography
+*------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin : 0 0 15px;
+  color  : #444444;
+  }
+
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  }
+
+/* --------------------------------------
+* LINK STYLE
+*------------------------------------------*/
+a {
+  color              : #ff5722;
+  text-decoration    : none;
+  -webkit-transition : all 0.3s ease 0s;
+  -moz-transition    : all 0.3s ease 0s;
+  -o-transition      : all 0.3s ease 0s;
+  transition         : all 0.3s ease 0s;
+  }
+
+a,
+a:active,
+a:focus,
+a:active {
+  text-decoration : none;
+  outline         : none
+  }
+
+a:hover,
+a:focus {
+  text-decoration : none;
+  color           : #ff5722;
+  }
+
+p {
+  margin-bottom : 20px;
+  }
+
+strong {
+  color : #444444;
+  }
+
+ul {
+  margin     : 0;
+  padding    : 0;
+  list-style : none;
+  }
+
+.content-section {
+  background: #F8F8F8;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}

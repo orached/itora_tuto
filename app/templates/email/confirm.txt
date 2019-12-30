@@ -1,0 +1,13 @@
+Chère/Cher {{ user.username }},
+
+Merci de s'être enregistré !
+
+Pour confirmer votre compte, merci de clicquer sur le lien suivant :
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Bien à vous,
+
+Equipe ITORA
+
+Note: les réponses à ce mail ne sont pas prises en compte.

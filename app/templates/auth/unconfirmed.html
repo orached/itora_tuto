@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}ITORA - Confirmation de votre compte{% endblock %}
+
+{% block app_content %}
+<div class="page-header">
+    <h1>
+        Bonjour, {{ current_user.username }}!
+    </h1>
+    <h3>Vous n'avez pas encore confirmer votre compte.</h3>
+    <p>
+        Avant de pouvoir vous utiliser toutes les fonctionalités de l'application, il faut confirmer votre compte.
+        Vérifiez votre messagerie, vous avez dû recevoir un lien de confirmation.
+    </p>
+    <p>
+        Besoin d'un nouveau lien de confirmation ?
+        <a href="{{ url_for('auth.resend_confirmation') }}">Cliquer ici</a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+<table class="table table-hover">
+    <h2>{{ post.title }}</h2>
+    {% set user_link %}
+        <span class="user_popup">
+            <a href="{{ url_for('users.user', username=post.author.username) }}">
+                {{ post.author.username }}
+            </a>
+        </span>
+    {% endset %}
+    by {{ _('%(username)s', username=user_link) }}
+    <a href="{{ url_for('users.user', username=post.author.username) }}">
+        <img src="{{ post.author.avatar(70) }} " width="20px" />
+    </a>
+    , under: 
+    {% if post.category %}
+        <a href="{{ url_for('posts.category', id=post.category.id) }}">
+            <span class="label label-info">{{ post.category.title }}</span>
+        </a>
+    {% else %}
+        <span class="label label-danger">Pas de catégorie</span>
+    {% endif %}
+        <span class=pull-right>
+            {{ _('%(when)s', when=post.timestamp.date()) }}
+        </span>
+    <tr>
+        <td>
+            <span id="post{{ post.id }}">
+                
+                <br>
+                {% if post.body_html %}
+                    {{ post.body_html | safe }}
+                {% else %}
+                    {{ post.body }}
+                {% endif %}
+            </span>
+            <br>
+            {% if current_user == post.author %}
+            <a href="{{ url_for('posts.editpost', id=post.id) }}">
+                <span class="label label-danger">Modifier</span>
+            </a>
+            {% endif %}
+            <a href="{{ url_for('posts.post', id=post.id) }}#comments">
+                <span class="label label-primary">
+                {{ post.comments.count() }} Commentaires
+                </span>
+            </a>
+            
+            <span class=pull-right>
+                <ul>
+                    <a href="https://twitter.com/intent/tweet?url={{ url_for('posts.post', id=post.id, _external=True) }}&text={{ post.title }}" target="_blank"><img src="{{ url_for('static', filename='twitter-share.png') }}"/></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('posts.post', id=post.id, _external=True) }}&title={{ post.title }}" target="_blank"><img src="{{ url_for('static', filename='linkedin-share.png') }}"/></a>
+                </ul>
+            </span>
+        </td>
+    </tr>
+</table>
+
+<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

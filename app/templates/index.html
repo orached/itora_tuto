@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<main role="main" class="container">
+    <div class="col-md-8">
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <div class="row content-section">
+            {% if g.search_form %}
+            <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                <div class="form-group">
+                    {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <br>
+        <div class="row content-section">
+            <h3>Naviguer par catégorie</h3>
+            <ul class="list-group">
+                {% for category in categories %}
+                <a href="{{ url_for('posts.category', id=category.id) }}">
+                    <span class="label label-info">{{ category.title }}</span>
+                </a>
+                ({{ category.posts.count() }})
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+        <br>
+        <div class="row content-section">
+            <h3>Plus</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Annonces</li>
+                <li class="list-group-item">Calendrier</li>
+            </ul>
+        </div>
+    </div>
+   
+   
+</main>
+ <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> {{ _('Articles plus récents') }}
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    {{ _('Articles plus anciens') }} <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

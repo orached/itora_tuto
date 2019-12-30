@@ -1,0 +1,8 @@
+<p>Chère/Cher {{ user.username }},</p>
+<p>Merci de s'être enregistré !</p>
+<p>Pour confirmer votre compte, merci de <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">cliquer ici</a>.</p>
+<p>Sinon, vous pouvez copier et coller le lien suivant dans la bare de recherche de votre navigateur :</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+<p>Bien à vous,</p>
+<p>Equipe ITORA</p>
+<p><small>Note: les réponses à ce mail ne sont pas prises en compte.</small></p>
